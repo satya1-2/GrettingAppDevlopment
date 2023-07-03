@@ -18,6 +18,9 @@ public class TestController {
     public String message() {
         return "hello World";
     }
-
+    @PostMapping("/add")
+    public User addUser(@RequestBody User user) {
+        return userRepo.save(user);
+    }
 
 }
