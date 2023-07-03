@@ -30,4 +30,10 @@ public class TestController {
         return userRepo.findById(id);
     }
 
+    @GetMapping("/findAll")
+    public List<User> getAllUser() {
+        return userRepo.findAll();
+    }
+
+
 }
