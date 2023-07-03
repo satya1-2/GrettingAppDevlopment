@@ -46,5 +46,19 @@ public class TestController {
         return null;
     }
 
+    @DeleteMapping("/delete/{id}")
+    public String deleteUser(@PathVariable int id) {
+        Optional<User> userData=userRepo.findById(id);
+        if (userData.isPresent()) {
+            userRepo.deleteById(id);
+            return " id delete successfully";
+        }
+        return "id does not exist.";
+    }
 
+    @DeleteMapping("/deleteAll")
+    public String deleteAllUsers() {
+        userRepo.deleteAll();
+        return "All users have been deleted.";
+    }
 }
