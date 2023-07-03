@@ -12,5 +12,12 @@ import java.util.Optional;
 @RequestMapping("/test")
 
 public class TestController {
+    @Autowired
+    private UserRepo userRepo;
+    @GetMapping()
+    public String message() {
+        return "hello World";
+    }
+
 
 }
