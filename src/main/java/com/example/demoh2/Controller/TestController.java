@@ -35,5 +35,16 @@ public class TestController {
         return userRepo.findAll();
     }
 
+    @PutMapping("/update/{id}")
+    public User updateUser(@PathVariable int id, @RequestBody User user) {
+        Optional<User> userData = userRepo.findById(id);
+        if (userData.isPresent()) {
+            userData.get().setName(user.getFirstName());
+            userData.get().setLastname(user.getLastName());
+            return userRepo.save(userData.get());
+        }
+        return null;
+    }
+
 
 }
