@@ -14,13 +14,20 @@ import java.util.Optional;
 public class TestController {
     @Autowired
     private UserRepo userRepo;
+
     @GetMapping()
     public String message() {
         return "hello World";
     }
+
     @PostMapping("/add")
     public User addUser(@RequestBody User user) {
         return userRepo.save(user);
+    }
+
+    @GetMapping("/findById")
+    public Optional<User> getById(@RequestParam int id) {
+        return userRepo.findById(id);
     }
 
 }
